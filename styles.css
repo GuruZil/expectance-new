@@ -595,6 +595,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .footer__col a:hover::after { width: 100%; }
 
+/* compact contact (mobile only) — phone number + email/social icons */
+.footer__compact { display: none; }
+.footer__compact .brand__mark { background: var(--paper); color: var(--ink); }
+.footer__phone { color: rgba(255, 255, 255, 0.85); font-size: 1rem; width: fit-content; }
+.footer__icons { display: flex; align-items: center; gap: 22px; }
+.footer__icons a {
+  display: inline-flex; color: rgba(255, 255, 255, 0.78);
+  transition: color 0.3s, transform 0.3s var(--ease);
+}
+.footer__icons a:hover { color: var(--paper); transform: translateY(-2px); }
+.footer__icons svg { width: 23px; height: 23px; display: block; }
+
 .footer__base {
   position: relative; z-index: 1;
   max-width: var(--maxw); margin: 0 auto;
@@ -667,5 +679,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .case__tags { grid-column: 2; }
   .case__meta { grid-column: 2; }
 
-  .footer__inner { grid-template-columns: 1fr; }
+  /* simplified mobile footer: just the number + email/social icons */
+  .footer__inner { display: none; }
+  .footer__compact {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; gap: 22px;
+    padding: clamp(56px, 16vw, 88px) var(--gutter) 36px;
+  }
+  .footer__base { justify-content: flex-start; }
+  .footer__base .mono:nth-child(2) { display: none; }
 }

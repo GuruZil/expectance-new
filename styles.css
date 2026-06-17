@@ -432,12 +432,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   gap: 28px; align-items: center;
   padding: clamp(28px, 3.4vw, 44px) 8px;
   border-bottom: 1px solid var(--line);
-  position: relative;
-  transition: background 0.4s var(--ease);
+  position: relative; isolation: isolate;
 }
-/* hover simply fills the row (no shift), like the capabilities cells */
-.case:hover {
+/* soft, full-bleed fill — wipes in from the left on hover, fades out in place
+   on leave (opacity fades fast while the wipe retreats slowly out of sight) */
+.case::before {
+  content: ""; position: absolute; top: 0; bottom: 0;
+  left: 50%; width: 100vw; margin-left: -50vw;
   background: var(--paper-2);
+  transform: scaleX(0); transform-origin: left center;
+  opacity: 0;
+  transition: transform 0.7s var(--ease), opacity 0.4s var(--ease);
+  z-index: -1; pointer-events: none;
+}
+.case:hover::before {
+  transform: scaleX(1); opacity: 1;
+  transition: transform 0.55s var(--ease), opacity 0.45s var(--ease);
 }
 .case.is-hidden {
   display: none;

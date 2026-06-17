@@ -12,7 +12,9 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Google Sans (display) — falls back to Outfit if unavailable -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -59,14 +61,13 @@
 
         <h1 class="hero__title">
           <span class="reveal glitch" style="--d:0" data-text="We build systems">We build systems</span>
-          <span class="reveal glitch" style="--d:1" data-text="that people">that people</span>
+          <span class="reveal glitch" style="--d:1" data-text="that you">that <span class="rotate-word" id="rotateWord">you</span></span>
           <span class="reveal glitch hero__title--em" style="--d:2" data-text="depend on.">depend on.</span>
         </h1>
 
         <p class="hero__lead reveal" style="--d:3">
-          Expectance is a complete AI and software development company. We design,
-          engineer, and operate business and enterprise systems across automation,
-          robotics, driverless vehicles, finance, and health.
+          Full-house AI and software design and development agency based in
+          San Francisco.
         </p>
 
         <div class="hero__actions reveal" style="--d:4">
@@ -81,6 +82,7 @@
         <span class="mono">37.7749° N, 122.4194° W</span>
       </div>
     </section>
+
 
     <!-- ============ MARQUEE ============ -->
     <section class="ticker" aria-hidden="true">

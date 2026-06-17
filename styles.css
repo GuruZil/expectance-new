@@ -13,7 +13,7 @@
   --line:       rgba(10, 10, 10, 0.12);
   --line-soft:  rgba(10, 10, 10, 0.07);
 
-  --font-display: "Bricolage Grotesque", Georgia, serif;
+  --font-display: "Google Sans", "Outfit", system-ui, sans-serif;
   --font-body:    "Hanken Grotesk", system-ui, sans-serif;
   --font-mono:    "JetBrains Mono", ui-monospace, monospace;
 
@@ -234,7 +234,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-bottom: 2rem;
   max-width: 920px;
 }
-.hero__title span { display: block; position: relative; }
+.hero__title > span { display: block; position: relative; }
 .hero__title--em { font-style: italic; font-weight: 500; }
 
 /* ---- Glitch (one-shot chromatic intro — RGB split that settles) ---- */
@@ -276,6 +276,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 @media (prefers-reduced-motion: reduce) {
   .glitch::before, .glitch::after { display: none; }
+}
+
+/* ---- Rotating headline word (glitches between terms) ---- */
+.rotate-word { display: inline-block; position: relative; will-change: transform; }
+.rotate-word.is-glitching {
+  animation: rw-glitch 0.16s steps(2, end) infinite;
+}
+@keyframes rw-glitch {
+  0%   { text-shadow: 2px 0 #ff2d55, -2px 0 #00d4ff; transform: translate(0, 0) skewX(0); }
+  33%  { text-shadow: -3px 0 #ff2d55, 3px 0 #00d4ff; transform: translate(1px, -1px) skewX(-3deg); }
+  66%  { text-shadow: 3px 0 #ff2d55, -3px 0 #00d4ff; transform: translate(-1px, 1px) skewX(2deg); }
+  100% { text-shadow: -2px 0 #ff2d55, 2px 0 #00d4ff; transform: translate(0, 0); }
 }
 
 .hero__lead {

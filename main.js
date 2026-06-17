@@ -109,4 +109,42 @@
   } else {
     stats.forEach(function (s) { s.textContent = s.getAttribute("data-count") + (s.getAttribute("data-suffix") || ""); });
   }
+
+  /* ---- Headline word rotator (glitches between terms, settles on "you") - */
+  var rotateWord = document.getElementById("rotateWord");
+  if (rotateWord) {
+    var WORDS = ["companies", "businesses", "factories", "enterprises", "you"];
+    var GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz#%&/<>*$";
+    if (reduceMotion) {
+      // no scramble/flicker — but still settle on the final word
+      // (leave it on "you", which is already shown)
+    } else {
+      var widx = 0;
+      var glitchTo = function (target, done) {
+        rotateWord.classList.add("is-glitching");
+        var dur = 520, start = null;
+        var stepFn = function (ts) {
+          if (start === null) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var reveal = Math.floor(p * target.length);
+          var out = "";
+          for (var i = 0; i < target.length; i++) {
+            out += i < reveal ? target.charAt(i) : GLYPHS.charAt(Math.floor(Math.random() * GLYPHS.length));
+          }
+          rotateWord.textContent = out;
+          if (p < 1) { requestAnimationFrame(stepFn); }
+          else { rotateWord.textContent = target; rotateWord.classList.remove("is-glitching"); if (done) done(); }
+        };
+        requestAnimationFrame(stepFn);
+      };
+      var nextWord = function () {
+        if (widx >= WORDS.length) return;      // finished on "you"
+        var word = WORDS[widx++];
+        glitchTo(word);
+        if (widx < WORDS.length) setTimeout(nextWord, 2000);
+      };
+      setTimeout(nextWord, 2000);              // start ~2s after load
+    }
+  }
+
 })();

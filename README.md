@@ -41,11 +41,12 @@ It's plain HTML/CSS/JS — no build step.
 ## Customizing the look
 
 - **Colors & fonts:** the `:root` variables at the top of `styles.css`.
-- **Hero flow-field:** `FLOW` / `FLOW_SPEED` (drift speed), particle count
-  (`countFor`), `CURSOR_R` (cursor reach), `CURSOR_GROW` (how much dots enlarge
-  near the cursor), `LINK` (max gap for a line), and the colour knobs
-  `COLOR_SAT` / `COLOR_LIGHT` / `COLOR_FREQ` (cluster size) / `COLOR_DRIFT`
-  (how fast colours shift) in `particles.js`.
+- **Hero flow-field:** `DOT_SIZE` (avg dot size), `LINK` (connection reach →
+  line density), `FLOW` / `FLOW_SPEED` (drift), `CURSOR_R` (cursor reach), and
+  `CURSOR_GROW` in `particles.js`. The resting field is monochrome; dots that get
+  connected near the cursor pick up colour (tweak `hueAt()` / the `hsl(...)` sat
+  & lightness).
+- **Headline word rotator:** the `WORDS` list and 2000 ms cadence in `main.js`.
 - **Footer wave:** speed (`t += …`), `SPREAD_R` / `SPREAD` / `RISE` (cursor
   spread), grid size (`GX`/`GY`), and `MOTES` in `footer.js`.
 - **Hero intro glitch:** the `glitch-in-a` / `glitch-in-b` keyframes and the two

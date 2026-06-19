@@ -47,11 +47,27 @@
 
     /* ---- The three stages (expandable bubbles) ---- */
     .journey { display: grid; gap: 16px; margin-top: 2.8rem; }
-    .stage { position: relative; background: linear-gradient(155deg, #ffffff 0%, #f9fafc 58%, #f5f6f9 100%); border: 1px solid rgba(10,10,10,0.06); border-top-color: rgba(255,255,255,0.9); border-radius: 22px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 16px 38px -24px rgba(10,10,10,0.26); transition: box-shadow 0.35s, border-color 0.35s; }
-    .stage[open] { background: linear-gradient(155deg, #ffffff 0%, #fcfdff 100%); border-color: rgba(10,10,10,0.09); box-shadow: inset 0 1px 0 rgba(255,255,255,0.95), 0 22px 46px -26px rgba(10,10,10,0.30); }
+    .stage { position: relative; background: radial-gradient(135% 140% at 100% 38%, rgba(134,171,149,0.18) 0%, rgba(134,171,149,0.05) 38%, rgba(134,171,149,0) 64%), linear-gradient(155deg, #ffffff 0%, #f9fafc 58%, #f5f6f9 100%); border: 1px solid rgba(10,10,10,0.06); border-top-color: rgba(255,255,255,0.9); border-radius: 22px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 16px 38px -24px rgba(10,10,10,0.26); transition: box-shadow 0.35s, border-color 0.35s; }
+    .stage[open] { background: radial-gradient(135% 140% at 100% 38%, rgba(134,171,149,0.15) 0%, rgba(134,171,149,0) 58%), linear-gradient(155deg, #ffffff 0%, #fcfdff 100%); border-color: rgba(10,10,10,0.09); box-shadow: inset 0 1px 0 rgba(255,255,255,0.95), 0 22px 46px -26px rgba(10,10,10,0.30); }
     /* glassy mirror sheen */
     .stage::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(118deg, rgba(255,255,255,0) 34%, rgba(255,255,255,0.6) 49%, rgba(255,255,255,0) 62%); }
     .stage > summary, .stage__body { position: relative; z-index: 1; }
+
+    /* Curated expand: panel eases open, steps fade up in a gentle stagger */
+    :root { interpolate-size: allow-keywords; }
+    .stage::details-content { block-size: 0; opacity: 0; overflow: hidden; transition: block-size 0.5s var(--ease), opacity 0.45s var(--ease), content-visibility 0.5s allow-discrete; }
+    .stage[open]::details-content { block-size: auto; opacity: 1; }
+    .stage[open] .substep { animation: substepIn 0.5s var(--ease) both; }
+    .stage[open] .substep:nth-of-type(1) { animation-delay: 0.14s; }
+    .stage[open] .substep:nth-of-type(2) { animation-delay: 0.21s; }
+    .stage[open] .substep:nth-of-type(3) { animation-delay: 0.28s; }
+    .stage[open] .substep:nth-of-type(4) { animation-delay: 0.35s; }
+    .stage[open] .substep:nth-of-type(5) { animation-delay: 0.42s; }
+    @keyframes substepIn { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
+    @media (prefers-reduced-motion: reduce) {
+      .stage::details-content { transition: none; }
+      .stage[open] .substep { animation: none; }
+    }
     .stage > summary {
       list-style: none; cursor: pointer; padding: clamp(1.5rem, 3vw, 2.4rem);
       display: grid; grid-template-columns: auto 1fr auto; gap: 0.5rem 1.6rem; align-items: center;

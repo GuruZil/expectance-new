@@ -147,10 +147,11 @@
       .journey { padding-left: 16px; }
       .journey::before { left: 5px; }
       .intro__text { font-size: clamp(1.15rem, 5vw, 2.1rem); padding: 0 24px; }
-      .brief { grid-template-columns: 1fr; }
-      .brief__item { padding: 1.15rem 1.3rem; }
-      .brief__h { font-size: 1rem; margin: 0.4rem 0 0.3rem; }
-      .brief__p { font-size: 0.88rem; line-height: 1.45; }
+      .brief { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; background: none; border: none; border-radius: 0; scrollbar-width: none; padding-bottom: 6px; }
+      .brief::-webkit-scrollbar { display: none; }
+      .brief__item { min-width: 80%; scroll-snap-align: start; border: 1px solid var(--line); border-radius: 14px; padding: 1.2rem 1.35rem; opacity: 1; transform: none; }
+      .brief__h { font-size: 1.02rem; margin: 0.4rem 0 0.35rem; }
+      .brief__p { font-size: 0.9rem; line-height: 1.5; }
       .svc-grid { grid-template-columns: 1fr; }
       .svc { flex-direction: column; gap: 0.35rem; }
       .svc__desc { text-align: left; max-width: none; }
@@ -168,6 +169,8 @@
   </div>
   <script>
   (function(){
+    if('scrollRestoration' in history){ history.scrollRestoration='manual'; }
+    if(!location.hash){ window.scrollTo(0,0); window.addEventListener('load', function(){ if(!location.hash) window.scrollTo(0,0); }); }
     var intro=document.getElementById('intro'); if(!intro) return;
     function remove(){ if(intro&&intro.parentNode){ intro.parentNode.removeChild(intro); } }
     // Show at most twice per device, then never again
@@ -217,7 +220,7 @@
       <div class="eng-hero__inner">
         <p class="eyebrow reveal">
           <span class="eyebrow__dot"></span>
-          Engagement · Prepared for Belvedere Wealth Management
+          Engagement · Prepared for <span style="text-decoration: underline; text-underline-offset: 3px;">Belvedere Wealth Management</span>
         </p>
         <h1 class="hero__title">
           <span class="reveal" style="--d:0">From discovery</span>

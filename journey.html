@@ -32,6 +32,8 @@
     .eng-meta { display: flex; flex-wrap: wrap; gap: 12px 30px; margin-top: 2.4rem; }
     .eng-meta span { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); display: inline-flex; align-items: center; gap: 0.5em; }
     .eng-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
+    .eng-meta .eng-meta__done { color: #86ab95; }
+    .eng-meta .eng-meta__done .dot { background: #86ab95; }
 
     .lede { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.3rem, 2.6vw, 1.9rem); line-height: 1.3; letter-spacing: -0.02em; max-width: 22ch; }
     .prose { color: var(--muted); font-size: 1.02rem; line-height: 1.7; max-width: 60ch; }
@@ -122,7 +124,7 @@
           <span class="reveal" style="--d:2">you depend on.</span>
         </h1>
         <div class="eng-meta reveal" style="--d:3">
-          <span><span class="dot"></span> Discovery call · complete</span>
+          <span class="eng-meta__done"><span class="dot"></span> Discovery call · complete</span>
           <span>Three steps · at your pace</span>
           <span>For [CLIENT NAME], [TITLE]</span>
         </div>

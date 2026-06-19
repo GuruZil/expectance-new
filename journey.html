@@ -68,6 +68,14 @@
       .stage::details-content { transition: none; }
       .stage[open] .substep { animation: none; }
     }
+
+    /* Intro typewriter overlay — greets the client on open, then lifts */
+    .intro { position: fixed; inset: 0; z-index: 10000; background: #0a0a0a; display: flex; align-items: center; justify-content: center; padding: var(--gutter); text-align: center; animation: introSafety 0s linear 7s forwards; }
+    .intro.is-done { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.7s var(--ease), visibility 0.7s var(--ease); }
+    .intro__text { margin: 0; font-family: var(--font-display); font-weight: 500; color: #fff; font-size: clamp(1.5rem, 4.4vw, 2.8rem); line-height: 1.3; letter-spacing: -0.02em; max-width: 20ch; white-space: pre-wrap; }
+    .intro__caret { display: inline-block; width: 2px; height: 1.05em; background: #fff; margin-left: 0.08em; vertical-align: -0.12em; animation: introCaret 0.9s steps(1) infinite; }
+    @keyframes introCaret { 50% { opacity: 0; } }
+    @keyframes introSafety { to { opacity: 0; visibility: hidden; pointer-events: none; } }
     .stage > summary {
       list-style: none; cursor: pointer; padding: clamp(1.5rem, 3vw, 2.4rem);
       display: grid; grid-template-columns: auto 1fr auto; gap: 0.5rem 1.6rem; align-items: center;
@@ -127,6 +135,30 @@
   </style>
 </head>
 <body>
+
+  <!-- Intro typewriter overlay (greets the client on open) -->
+  <div id="intro" class="intro"><p class="intro__text"><span id="introType"></span><span class="intro__caret" aria-hidden="true"></span></p></div>
+  <script>
+  (function(){
+    var intro=document.getElementById('intro'); if(!intro) return;
+    var typeEl=document.getElementById('introType'); var html=document.documentElement; var done=false;
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    html.style.overflow='hidden';
+    function finish(){ if(done) return; done=true; html.style.overflow=''; intro.classList.add('is-done');
+      setTimeout(function(){ if(intro&&intro.parentNode){ intro.parentNode.removeChild(intro); } },800); }
+    intro.addEventListener('click',finish);
+    setTimeout(finish,6500); // safety net
+    var msg='Hello Jerran and Sean,\nwe’re looking forward to building with you.';
+    if(reduce){ typeEl.textContent=msg; setTimeout(finish,1800); return; }
+    var i=0;
+    function tick(){ if(done) return; typeEl.textContent=msg.slice(0,i);
+      if(i>=msg.length){ setTimeout(finish,750); return; }
+      var ch=msg.charAt(i); i++;
+      var d = ch===',' ? 240 : (ch==='\n' ? 330 : (20+Math.random()*30));
+      setTimeout(tick,d); }
+    setTimeout(tick,350);
+  })();
+  </script>
 
   <div class="grain" aria-hidden="true"></div>
 

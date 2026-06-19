@@ -40,6 +40,10 @@
     .cta__date strong { color: #d6ebde; font-weight: 600; }
     .cta__lead strong { color: var(--paper); font-weight: 600; }
 
+    /* Bottom CTA as a contained dark pane, matching the stage panes */
+    .closing { background: transparent; max-width: var(--maxw); margin: 0 auto; padding: clamp(24px,4vw,56px) var(--gutter) clamp(64px,9vw,130px); }
+    .cta { max-width: none; background: radial-gradient(135% 150% at 100% 30%, rgba(134,171,149,0.16) 0%, rgba(134,171,149,0.04) 40%, rgba(134,171,149,0) 66%), linear-gradient(155deg, #1d1d20 0%, #141416 55%, #0c0c0d 100%); border: 1px solid rgba(255,255,255,0.08); border-top-color: rgba(255,255,255,0.16); border-radius: 26px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.09), 0 22px 50px -26px rgba(0,0,0,0.6); padding: clamp(52px,8vw,104px) clamp(28px,6vw,72px); }
+
     .lede { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.3rem, 2.6vw, 1.9rem); line-height: 1.3; letter-spacing: -0.02em; max-width: 22ch; }
     .prose { color: var(--muted); font-size: 1.02rem; line-height: 1.7; max-width: 60ch; }
     .prose + .prose { margin-top: 1.1rem; }

@@ -28,7 +28,7 @@
     .eng-hero__veil { position: absolute; inset: 0; z-index: 1; pointer-events: none;
       background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.97) 40%, rgba(255,255,255,0.62) 64%, rgba(255,255,255,0) 90%); }
     .eng-hero__inner { position: relative; z-index: 2; }
-    @media (max-width: 820px) { .eng-hero__canvas { display: none; } }
+    @media (max-width: 820px) { .eng-hero__canvas { opacity: 0.5; } .eng-hero__veil { background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 40%, rgba(255,255,255,0.9) 80%); } }
     .eng-meta { display: flex; flex-wrap: wrap; gap: 12px 30px; margin-top: 2.4rem; }
     .eng-meta span { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); display: inline-flex; align-items: center; gap: 0.5em; }
     .eng-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
@@ -133,11 +133,18 @@
     .nav__back:hover { color: var(--ink); }
 
     @media (max-width: 820px) {
+      .eng-meta { flex-direction: column; gap: 9px; margin-top: 2rem; }
+      .stage > summary { gap: 0.35rem 1rem; }
+      .stage__hint { display: none; }
+      .intro__text { font-size: clamp(1.15rem, 5vw, 2.1rem); padding: 0 24px; }
       .brief { grid-template-columns: 1fr; }
+      .brief__item { padding: 1.15rem 1.3rem; }
+      .brief__h { font-size: 1rem; margin: 0.4rem 0 0.3rem; }
+      .brief__p { font-size: 0.88rem; line-height: 1.45; }
       .svc-grid { grid-template-columns: 1fr; }
       .svc { flex-direction: column; gap: 0.35rem; }
       .svc__desc { text-align: left; max-width: none; }
-      .stage__hint { display: none; }
+      .footer__inner { display: grid; grid-template-columns: 1fr; gap: 26px; }
     }
   </style>
 </head>
@@ -188,7 +195,7 @@
         <span class="brand__mark">Ex</span>
         <span class="brand__word">Expectance</span>
       </a>
-      <a href="/" class="nav__back">← expectance.ai</a>
+      <a href="/" class="nav__back">← Back to site</a>
     </div>
   </header>
 

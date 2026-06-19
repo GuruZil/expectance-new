@@ -136,10 +136,15 @@
     .method li strong { color: var(--paper); font-weight: 600; }
 
     /* ---- Services ---- */
-    .svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 56px; margin-top: 2.2rem; }
-    .svc { display: flex; justify-content: space-between; align-items: baseline; gap: 1.4rem; padding: 1.2rem 0; border-bottom: 1px solid var(--line); }
-    .svc__name { font-family: var(--font-display); font-weight: 600; font-size: 1.02rem; letter-spacing: -0.01em; }
-    .svc__desc { color: var(--muted); font-size: 0.86rem; text-align: right; max-width: 30ch; }
+    .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 2.6rem; }
+    .svc { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 0.55rem; padding: 1.7rem 1.7rem 1.85rem; background: #ffffff; border: 1px solid var(--line); border-radius: 16px; transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease), border-color 0.4s, background 0.45s; }
+    .svc::before { content: ""; position: absolute; left: 0; top: 0; height: 2px; width: 0; background: #86ab95; transition: width 0.5s var(--ease); }
+    .svc:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.10); background: linear-gradient(155deg, #1d1d20 0%, #0d0d0e 100%); box-shadow: 0 24px 46px -26px rgba(0,0,0,0.62); }
+    .svc:hover::before { width: 100%; }
+    .svc__name { font-family: var(--font-display); font-weight: 600; font-size: 1.08rem; letter-spacing: -0.01em; color: var(--ink); transition: color 0.4s; }
+    .svc__desc { color: var(--muted); font-size: 0.9rem; line-height: 1.55; text-align: left; max-width: none; transition: color 0.4s; }
+    .svc:hover .svc__name { color: #ffffff; }
+    .svc:hover .svc__desc { color: rgba(255,255,255,0.72); }
 
     .nav__back { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); transition: color 0.3s; }
     .nav__back:hover { color: var(--ink); }

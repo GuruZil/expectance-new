@@ -96,13 +96,13 @@
       display: grid; grid-template-columns: auto 1fr auto; gap: 0.5rem 1.6rem; align-items: center;
     }
     .stage > summary::-webkit-details-marker { display: none; }
-    .stage__n { grid-column: 1; grid-row: 1; font-family: var(--font-mono); font-size: 0.8rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; align-self: center; }
+    .stage__n { grid-column: 1; grid-row: 1; font-family: var(--font-mono); font-size: 0.8rem; color: rgba(255,255,255,0.58); letter-spacing: 0.1em; align-self: center; }
     .stage__title { grid-column: 2; grid-row: 1; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.4rem, 2.8vw, 2rem); letter-spacing: -0.02em; color: #ffffff; }
-    .stage__line { grid-column: 2; grid-row: 2; color: rgba(255,255,255,0.6); font-size: 0.98rem; line-height: 1.5; max-width: 54ch; }
+    .stage__line { grid-column: 2; grid-row: 2; color: rgba(255,255,255,0.82); font-size: 0.98rem; line-height: 1.5; max-width: 54ch; }
     .stage__toggle { grid-column: 3; grid-row: 1; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); display: grid; place-items: center; color: #ffffff; transition: transform 0.4s var(--ease), background 0.3s, color 0.3s; }
     .stage[open] .stage__toggle { transform: rotate(45deg); background: #ffffff; color: #0a0a0a; }
     .stage__toggle svg { width: 17px; height: 17px; }
-    .stage__hint { grid-column: 3; grid-row: 2; justify-self: end; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); white-space: nowrap; }
+    .stage__hint { grid-column: 3; grid-row: 2; justify-self: end; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.58); white-space: nowrap; }
     .stage[open] .stage__hint { visibility: hidden; }
 
     .stage__body { padding: 0 clamp(1.5rem, 3vw, 2.4rem) clamp(1.5rem, 3vw, 2.4rem); }
@@ -110,9 +110,9 @@
     .substep { display: grid; grid-template-columns: 1.7rem 1fr; gap: 0.25rem 1rem; align-items: baseline; }
     .substep__b { grid-column: 1; grid-row: 1; width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.85); margin-top: 0.5em; }
     .substep__name { grid-column: 2; grid-row: 1; font-family: var(--font-display); font-weight: 600; font-size: 1.06rem; letter-spacing: -0.01em; color: #ffffff; }
-    .substep__desc { grid-column: 2; grid-row: 2; color: rgba(255,255,255,0.6); font-size: 0.93rem; line-height: 1.55; }
+    .substep__desc { grid-column: 2; grid-row: 2; color: rgba(255,255,255,0.82); font-size: 0.93rem; line-height: 1.55; }
     .substep__pill { font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3em 0.7em; border-radius: 100px; background: #ffffff; color: #0a0a0a; margin-left: 0.6rem; vertical-align: middle; }
-    .stage__note { font-size: 0.84rem; color: rgba(255,255,255,0.45); font-style: italic; line-height: 1.5; padding-left: 2.7rem; }
+    .stage__note { font-size: 0.84rem; color: rgba(255,255,255,0.62); font-style: italic; line-height: 1.5; padding-left: 2.7rem; }
     .substep__when { grid-column: 2; justify-self: start; margin-top: 0.7rem; display: inline-block; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #a9c9b6; background: rgba(134,171,149,0.12); border: 1px solid rgba(134,171,149,0.4); border-radius: 100px; padding: 0.4em 0.85em; }
     .substep__when strong { color: #ffffff; font-weight: 600; }
 
@@ -128,7 +128,7 @@
     .method__h { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1.2rem; }
     .method ol { margin: 0; padding-left: 1.3rem; display: grid; gap: 0.9rem; }
     .method li { color: rgba(255,255,255,0.72); font-size: 1rem; line-height: 1.55; padding-left: 0.3rem; }
-    .method li::marker { color: rgba(255,255,255,0.4); }
+    .method li::marker { color: rgba(255,255,255,0.58); }
     .method li strong { color: var(--paper); font-weight: 600; }
 
     /* ---- Services ---- */
